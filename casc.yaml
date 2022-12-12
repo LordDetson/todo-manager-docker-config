@@ -1,0 +1,101 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ${JENKINS_ADMIN_LOGIN}
+          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
+  remotingSecurity:
+    enabled: true
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: SonarQube
+              secret: ${SONAR_QUBE_TOKEN}
+              description: "SonarQube token"
+tool:
+  maven:
+    installations:
+      - name: maven-3.6.3
+        properties:
+          - installSource:
+              installers:
+                - maven:
+                    id: "3.6.3"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
+  jdk:
+    installations:
+      - name: openjdk17
+        home: "/opt/java/openjdk"
+unclassified:
+  location:
+    url: http://jenkins:8080/
+  sonarglobalconfiguration:
+    buildWrapperEnabled: true
+    installations:
+      - name: "SonarQube"                         # id of the SonarQube configuration - to be used in jobs
+        serverUrl: "http://sonarqube:9000"
+        credentialsId: SonarQube       # id of the credentials containing sonar auth token
+        triggers:
+          skipScmCause: true
+          skipUpstreamCause: true
+          envVar: "envVar"
+jobs:
+  - script: >
+      pipelineJob('todo-manager-core') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/LordDetson/todo-manager-core.git')
+                }
+                branch('*/main')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
+  - script: >
+      pipelineJob('todo-manager-swing') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/LordDetson/todo-manager-swing.git')
+                }
+                branch('*/main')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
+  - script: >
+      pipelineJob('todo-manager-api') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/LordDetson/todo-manager-api.git')
+                }
+                branch('*/main')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
