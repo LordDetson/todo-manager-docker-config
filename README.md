@@ -35,3 +35,5 @@ Jenkins is already configured and ready to go
 - Reduce JVM size for Windows desktop app with `jlink`
 - Set up core job so that it runs swing and api jobs
 - Fix warnings in Jenkins
+- Send the build of the desktop version of the application for download after the swing job is completed
+- Deploy the backend version of the application after the api job is completed
