@@ -28,3 +28,10 @@ docker run -d -p 8080:8080 -p 50000:50000 --network sonarqube-docker-compose_son
 11. Login as admin
 
 Jenkins is already configured and ready to go
+
+## Possible Improvements
+
+- Automatically generate SonarQube token for Jenkins to run CI/CD with one script
+- Reduce JVM size for Windows desktop app with `jlink`
+- Set up core job so that it runs swing and api jobs
+- Fix warnings in Jenkins
