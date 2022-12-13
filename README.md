@@ -40,4 +40,4 @@ Jenkins is already configured and ready to go
 
 ## Links
 
-- This CI/CD config repository is connected to LordDetson/todo-manager-core, LordDetson/todo-manager-swing, LordDetson/todo-manager-api
+- This CI/CD config repository is connected to [LordDetson/todo-manager-core](https://github.com/LordDetson/todo-manager-core), [LordDetson/todo-manager-swing](https://github.com/LordDetson/todo-manager-swing), [LordDetson/todo-manager-api](https://github.com/LordDetson/todo-manager-api)
