@@ -37,6 +37,7 @@ Jenkins is already configured and ready to go
 - Fix warnings in Jenkins
 - Send the build of the desktop version of the application for download after the swing job is completed
 - Create and deploy the docker image of the backend application version after the api job is completed
+- Add triggers for jobs
 
 ## Links
 
