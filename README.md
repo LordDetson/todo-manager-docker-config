@@ -2,28 +2,20 @@
 Config to automatically setup CI/CD on docker for todo manager app
 
 ## Steps:
-1. Go to `sonarqube-docker-compose` folder
-2. Run `docker-compose up -d` to run SonarQube
+1. Run `run-sonarqube <db_user> <db_password> <db_name>` bash script to create and start sonarqube with postgres db
+   - `<db_user>` is an optional parameter which is defined the name of the database user. By default, this is `root`.
+   - `<db_password>` is an optional parameter which is defined the password of the database user. By default, this is `passw0rd`.
+   - `<db_name>` is an optional parameter which is defined the name of the database. By default, this is `sonarqube`.
 3. Go to http://localhost:9000/
 4. Login as `admin`
 5. Update your password
 6. Go to `Administration > Security > Users > Administrator > Tokens`
 7. Create and copy new token
-8. Go to `jenkins-image` folder
-9. Run the following command to build image
-
-```
-docker build -t jenkins/todo-manager .
-```
-
-9. Run the following command with copid token to run a container based on the created image
-
-```
-docker run -d -p 8080:8080 -p 50000:50000 --network sonarqube-docker-compose_sonarnet --env JENKINS_ADMIN_LOGIN=admin --env JENKINS_ADMIN_PASSWORD=admin --env SONAR_QUBE_TOKEN=<TOKEN> jenkins/todo-manager
-```
-
-> Warning! Do not mount the volume with the folder on the local machine. For some reason the casc.yaml file is not being copied or deleted. Finding out the reasons.
-
+8. Run `build-jenkins` bash script to build configured jenkins image if it's not there
+9. Run `run-jenkins <sonar_token> <admin_name> <admin_password>` bash script to create and start configured jenkins
+   - `<sonar_token>` is a required parameter
+   - `<admin_name>` is an optional parameter which is defined the name of the jenkins admin. By default, this is `admin`.
+   - `<admin_password>` is an optional parameter which is defined the password of the jenkins admin. By default, this is `passw0rd`.
 10. Go to http://localhost:8080/
 11. Login as admin
 

@@ -1,0 +1,26 @@
+#!/bin/bash
+if [ -n "$1" ]
+then
+if [ -n "$2" ]
+then
+jadmin=$2
+else
+jadmin=admin
+fi
+if [ -n "$3" ]
+then
+jpassword=$3
+else
+jpassword=passw0rd
+fi
+docker run -d \
+-p 8080:8080 \
+-p 50000:50000 \
+--network sonarnet \
+-e JENKINS_ADMIN_LOGIN=$jadmin \
+-e JENKINS_ADMIN_PASSWORD=$jpassword \
+-e SONAR_QUBE_TOKEN=$1 \
+jenkins/todo-manager
+else
+echo "Sonar token is a required parameter"
+fi

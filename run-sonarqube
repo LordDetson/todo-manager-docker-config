@@ -1,0 +1,43 @@
+#!/bin/bash
+if [ -n "$1" ]
+then
+db_user=$1
+else
+db_user=root
+fi
+
+if [ -n "$2" ]
+then
+db_password=$2
+else
+db_password=passw0rd
+fi
+
+if [ -n "$3" ]
+then
+db_name=$3
+else
+db_name=sonarqube
+fi
+
+docker run -d \
+--network sonarnet \
+-e POSTGRES_USER=$db_user \
+-e POSTGRES_PASSWORD=$db_password \
+-e POSTGRES_DB=$db_name \
+-v /var/lib/postgresql/data:/var/lib/postgresql/data \
+--name postgres \
+postgres:15.1
+
+docker run -d \
+--network sonarnet \
+-p 9000:9000 \
+-v /opt/sonarqube/data:/opt/sonarqube/data \
+-v /opt/sonarqube/logs:/opt/sonarqube/logs \
+-v /opt/sonarqube/extensions:/opt/sonarqube/extensions \
+-v /opt/sonarqube/lib/bundled-plugins:/opt/sonarqube/lib/bundled-plugins \
+-e sonar.jdbc.username=$db_user \
+-e sonar.jdbc.password=$db_password \
+-e sonar.jdbc.url=jdbc:postgresql://postgres:5432/$db_name \
+--name sonarqube \
+sonarqube:9.6.0-community
