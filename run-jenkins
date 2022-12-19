@@ -17,6 +17,7 @@ docker run -d \
 -p 8080:8080 \
 -p 50000:50000 \
 --network sonarnet \
+-v /var/jenkins_home:/var/jenkins_home \
 -e JENKINS_ADMIN_LOGIN=$jadmin \
 -e JENKINS_ADMIN_PASSWORD=$jpassword \
 -e SONAR_QUBE_TOKEN=$1 \
