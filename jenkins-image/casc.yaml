@@ -99,3 +99,19 @@ jobs:
           }
         }
       }
+  - script: >
+      pipelineJob('macappbundler-maven-plugin') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/LordDetson/macappbundler-maven-plugin.git')
+                }
+                branch('*/main')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
