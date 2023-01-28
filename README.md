@@ -33,7 +33,7 @@ Jenkins is already configured and ready to go
 
 ## Set up db for ToDo Manager API
 
-1. Run `run-mysql <db_password> <db_user> <db_password> <db_name>` bash script to create and start Mysql db for ToDo Manager API
+1. Run `run-mysql <db_root_password> <db_user> <db_password> <db_name>` bash script to create and start Mysql db for ToDo Manager API
 
 ## Links
 
