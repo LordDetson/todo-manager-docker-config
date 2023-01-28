@@ -1,0 +1,38 @@
+#!/bin/bash
+if [ -n "$1" ]
+then
+db_root_password=$1
+else
+db_root_password=passw0rd
+fi
+
+if [ -n "$2" ]
+then
+db_user=$2
+else
+db_user=sa
+fi
+
+if [ -n "$3" ]
+then
+db_password=$3
+else
+db_password=passw0rd
+fi
+
+if [ -n "$4" ]
+then
+db_name=$4
+else
+db_name=todo
+fi
+
+docker run -d \
+--network todo-manager \
+-v /var/lib/mysql:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=$db_root_password \
+-e MYSQL_USER=$db_user \
+-e MYSQL_PASSWORD=$db_password \
+-e MYSQL_DATABASE=$db_name \
+--name mysql \
+mysql:8.0.32
