@@ -36,3 +36,8 @@ docker run -d \
 -e MYSQL_DATABASE=$db_name \
 --name mysql \
 mysql:8.0.32
+
+export DB_ROOT_PASSWORD=$db_root_password
+export DB_USER=$db_user
+export DB_PASSWORD=$db_password
+export DB_NAME=$db_name
