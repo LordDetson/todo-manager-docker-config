@@ -31,6 +31,10 @@ Jenkins is already configured and ready to go
 - Create and deploy the docker image of the backend application version after the api job is completed
 - Add triggers for jobs
 
+## Set up db for ToDo Manager API
+
+1. Run `run-mysql <db_password> <db_user> <db_password> <db_name>` bash script to create and start Mysql db for ToDo Manager API
+
 ## Links
 
 - This CI/CD config repository is connected to [LordDetson/todo-manager-core](https://github.com/LordDetson/todo-manager-core), [LordDetson/todo-manager-swing](https://github.com/LordDetson/todo-manager-swing), [LordDetson/todo-manager-api](https://github.com/LordDetson/todo-manager-api)
