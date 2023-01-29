@@ -3,6 +3,9 @@
 echo "Update the apt package index"
 apt-get -qq update
 
+echo "Install the lsb-core package"
+apt install lsb-core
+
 echo "Install packages to allow apt to use a repository over HTTPS"
 apt-get install \
     ca-certificates \
