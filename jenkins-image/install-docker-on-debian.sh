@@ -29,9 +29,6 @@ apt-get install -y \
     containerd.io \
     docker-compose-plugin
 
-echo "Create the docker user group"
-groupadd docker
-
 echo "Add jenkins user to the docker user group"
 usermod -aG docker jenkins
 
