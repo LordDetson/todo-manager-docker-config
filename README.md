@@ -33,7 +33,17 @@ Jenkins is already configured and ready to go
 
 ## Set up db for ToDo Manager API
 
-1. Run `run-mysql <db_root_password> <db_user> <db_password> <db_name>` bash script to create and start Mysql db for ToDo Manager API
+1. Run `run-mysql <db_root_password> <db_user> <db_password> <db_name>` bash script to create and start Mysql db for ToDo Manager API. 
+   - `<db_root_password>` is an optional parameter which is defined the password of the database root user. By default, this is `passw0rd`.
+   - `<db_user>` is an optional parameter which is defined the name of the database user. By default, this is `root`.
+   - `<db_password>` is an optional parameter which is defined the password of the database user. By default, this is `passw0rd`.
+   - `<db_name>` is an optional parameter which is defined the name of the database. By default, this is `sonarqube`.
+   
+   Also this script creates the following environment variables:
+   - `DB_ROOT_PASSWORD` is `<db_root_password>`
+   - `DB_USER` is `<db_user>`
+   - `DB_PASSWORD` is `<db_password>`
+   - `DB_NAME` is `<db_name>`
 
 ## Links
 
