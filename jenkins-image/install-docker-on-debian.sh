@@ -3,11 +3,8 @@
 echo "Update the apt package index"
 apt-get -qq update
 
-echo "Install the lsb-core package"
-apt install lsb-core
-
 echo "Install packages to allow apt to use a repository over HTTPS"
-apt-get install \
+apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
@@ -33,5 +30,8 @@ usermod -aG docker $USER
 
 echo "Activate the changes to groups"
 newgrp docker
+
+echo "Clean the apt package index"
+apt-get clean all
 
 echo "Done"
