@@ -24,7 +24,7 @@ then
             -e DOCKER_HUB_USERNAME=$docker-hub-username \
             -e DOCKER_HUB_PASSWORD=$docker-hub-password \
             --name jenkins \
-            jenkins/todo-manager
+            todo-manager/jenkins
         else
           echo "Docker Hub password is a required parameter"
         fi
