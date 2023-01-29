@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Update the apt package index"
-apt-get update
+apt-get -qq update
 
 echo "Install packages to allow apt to use a repository over HTTPS"
 apt-get install \
