@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ -n "$1" ]
 then
-  sonar-token=$1
+  sonar_token=$1
   if [ -n "$2" ]
   then
     jadmin=$2
@@ -10,19 +10,19 @@ then
       jpassword=$3
       if [ -n "$4" ]
       then
-        docker-hub-username=$4
+        docker_hub_username=$4
         if [ -n "$5" ]
         then
-          docker-hub-password=$5
+          docker_hub_password=$5
           docker run -d \
             -p 8080:8080 \
             -p 50000:50000 \
             --network sonarnet \
             -e JENKINS_ADMIN_LOGIN=$jadmin \
             -e JENKINS_ADMIN_PASSWORD=$jpassword \
-            -e SONAR_QUBE_TOKEN=$sonar-token \
-            -e DOCKER_HUB_USERNAME=$docker-hub-username \
-            -e DOCKER_HUB_PASSWORD=$docker-hub-password \
+            -e SONAR_QUBE_TOKEN=$sonar_token \
+            -e DOCKER_HUB_USERNAME=$docker_hub_username \
+            -e DOCKER_HUB_PASSWORD=$docker_hub_password \
             --name jenkins \
             todo-manager/jenkins
         else
