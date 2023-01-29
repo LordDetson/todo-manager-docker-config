@@ -21,6 +21,12 @@ credentials:
               id: SonarQube
               secret: ${SONAR_QUBE_TOKEN}
               description: "SonarQube token"
+          - usernamePassword:
+              scope: GLOBAL
+              id: DockerHub
+              username: ${DOCKER_HUB_USERNAME}
+              password: ${DOCKER_HUB_PASSWORD}
+              description: "DockerHub login"
 tool:
   maven:
     installations:
