@@ -18,6 +18,7 @@ then
             -p 8080:8080 \
             -p 50000:50000 \
             --network sonarnet \
+            -v /var/run/docker.sock:/var/run/docker.sock \
             -e JENKINS_ADMIN_LOGIN=$jadmin \
             -e JENKINS_ADMIN_PASSWORD=$jpassword \
             -e SONAR_QUBE_TOKEN=$sonar_token \
