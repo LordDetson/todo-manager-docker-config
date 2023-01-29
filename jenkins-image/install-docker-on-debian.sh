@@ -22,6 +22,9 @@ echo \
 echo "Install Docker Engine, containerd, and Docker Compose"
 apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
+echo "Create the docker user group"
+groupadd docker
+
 echo "Add your user to the docker user group"
 usermod -aG docker $USER
 
