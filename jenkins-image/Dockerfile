@@ -12,8 +12,8 @@ ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
 ENV WIN_JAVA_HOME=/opt/java/win-openjdk-17
 ENV MAC_JAVA_HOME=/opt/java/mac-openjdk-17
 USER root
-RUN curl -sSL https://get.docker.com | sh
-RUN usermod -a -G docker jenkins
+COPY install-docker-on-debian.sh /usr/bin/install-docker-on-debian.sh
+RUN sh /usr/bin/install-docker-on-debian.sh
 USER jenkins
 COPY --chown=jenkins:jenkins jenkins-plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
