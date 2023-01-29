@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t jenkins/todo-manager ./jenkins-image
+docker build -t todo-manager/jenkins ./jenkins-image
