@@ -27,6 +27,12 @@ credentials:
               username: ${DOCKER_HUB_USERNAME}
               password: ${DOCKER_HUB_PASSWORD}
               description: "DockerHub login"
+          - usernamePassword:
+              scope: GLOBAL
+              id: ToDoDB
+              username: ${DB_USERNAME}
+              password: ${DB_PASSWORD}
+              description: "Database login for application"
 tool:
   maven:
     installations:
