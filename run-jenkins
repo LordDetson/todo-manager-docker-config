@@ -1,43 +1,71 @@
 #!/bin/bash
 if [ -n "$1" ]
-then
-  sonar_token=$1
-  if [ -n "$2" ]
-  then
-    jadmin=$2
-    if [ -n "$3" ]
-    then
-      jpassword=$3
-      if [ -n "$4" ]
-      then
-        docker_hub_username=$4
-        if [ -n "$5" ]
-        then
-          docker_hub_password=$5
-          docker run -d \
-            -p 8080:8080 \
-            -p 50000:50000 \
-            --network sonarnet \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -e JENKINS_ADMIN_LOGIN=$jadmin \
-            -e JENKINS_ADMIN_PASSWORD=$jpassword \
-            -e SONAR_QUBE_TOKEN=$sonar_token \
-            -e DOCKER_HUB_USERNAME=$docker_hub_username \
-            -e DOCKER_HUB_PASSWORD=$docker_hub_password \
-            --name jenkins \
-            todo-manager/jenkins
-        else
-          echo "Docker Hub password is a required parameter"
-        fi
-      else
-        echo "Docker Hub username is a required parameter"
-      fi
-    else
-      echo "Jenkins password is a required parameter"
-    fi
-  else
-    echo "Jenkins username is a required parameter"
-  fi
-else
-echo "Sonar token is a required parameter"
+	then
+		sonar_token=$1
+	else
+		echo "Sonar token required"
+		return
 fi
+
+if [ -n "$2" ]
+	then
+		jadmin=$2
+	else
+		echo "Jenkins username required"
+		return
+fi
+
+if [ -n "$3" ]
+	then
+		jpassword=$3
+	else
+		echo "Jenkins password required"
+		return
+fi
+
+if [ -n "$4" ]
+	then
+		docker_hub_username=$4
+	else
+		echo "Docker Hub username required"
+		return
+fi
+
+if [ -n "$5" ]
+	then
+		docker_hub_password=$5
+	else
+		echo "Docker Hub password required"
+		return
+fi
+
+if [ -n "$6" ]
+	then
+		db_username=$6
+	else
+		echo "Database username required"
+		return
+fi
+
+if [ -n "$7" ]
+	then
+		db_password=$7
+	else
+		echo "Database password required"
+		return
+fi
+
+docker run -d \
+	-p 8080:8080 \
+	-p 50000:50000 \
+	--network sonarnet \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	-e JENKINS_ADMIN_LOGIN=$jadmin \
+	-e JENKINS_ADMIN_PASSWORD=$jpassword \
+	-e SONAR_QUBE_TOKEN=$sonar_token \
+	-e DOCKER_HUB_USERNAME=$docker_hub_username \
+	-e DOCKER_HUB_PASSWORD=$docker_hub_password \
+	-e DB_USERNAME=$db_username \
+	-e DB_PASSWORD=$db_password \
+	--name jenkins \
+	todo-manager/jenkins
