@@ -12,12 +12,14 @@ Config to automatically setup CI/CD on docker for todo manager app
 6. Go to `Administration > Security > Users > Administrator > Tokens`
 7. Create and copy new token
 8. Run `build-jenkins` bash script to build configured jenkins image if it's not there
-9. Run `run-jenkins <sonar_token> <admin_name> <admin_password> <docker_hub_username> <docker_hub_password>` bash script to create and start configured jenkins
+9. Run `run-jenkins <sonar_token> <admin_name> <admin_password> <docker_hub_username> <docker_hub_password> <db_username> <db_password>` bash script to create and start configured jenkins
    - `<sonar_token>` is a required parameter
    - `<admin_name>` is a required parameter which is defined the name of the jenkins admin
    - `<admin_password>` is a required parameter which is defined the password of the jenkins admin
    - `<docker_hub_username>` is a required parameter which is defined the username of the DockerHub account
    - `<docker_hub_password>` is a required parameter which is defined the password of the DockerHub account
+   - `<db_username>` is a required parameter which is defined the username of the Database
+   - `<db_password>` is a required parameter which is defined the password of the Database
 10. Go to http://localhost:8080/
 11. Login as admin
 
