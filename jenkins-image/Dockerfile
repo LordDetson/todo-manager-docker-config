@@ -13,7 +13,7 @@ ENV WIN_JAVA_HOME=/opt/java/win-openjdk-17
 ENV MAC_JAVA_HOME=/opt/java/mac-openjdk-17
 USER root
 COPY install-docker-on-debian.sh /var/install-docker-on-debian.sh
-RUN sh install-docker-on-debian.sh
+RUN sh /var/install-docker-on-debian.sh
 USER jenkins
 COPY --chown=jenkins:jenkins jenkins-plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
