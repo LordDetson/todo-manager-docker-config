@@ -20,6 +20,8 @@ else
 db_name=sonarqube
 fi
 
+docker network create sonarnet
+
 docker run -d \
 --network sonarnet \
 -e POSTGRES_USER=$db_user \
