@@ -27,8 +27,11 @@ else
 db_name=todo
 fi
 
+app_network=todo-manager-api
+
+docker network create $app_network
 docker run -d \
---network todo-manager \
+--network $app_network \
 -v /var/lib/mysql:/var/lib/mysql \
 -e MYSQL_ROOT_PASSWORD=$db_root_password \
 -e MYSQL_USER=$db_user \
