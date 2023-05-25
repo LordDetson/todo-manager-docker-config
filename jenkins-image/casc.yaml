@@ -127,3 +127,19 @@ jobs:
           }
         }
       }
+  - script: >
+      pipelineJob('extra-swing-components') {
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('https://github.com/LordDetson/extra-swing-components.git')
+                }
+                branch('*/main')
+              }
+            }
+            lightweight()
+          }
+        }
+      }
