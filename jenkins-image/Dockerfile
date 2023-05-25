@@ -20,4 +20,4 @@ RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 COPY --chown=jenkins:jenkins casc.yaml $CASC_JENKINS_CONFIG
 COPY --from=download-openjdk-17 /jdk-17 $WIN_JAVA_HOME
-COPY --from=download-openjdk-17 /jdk-17.0.6.jdk $MAC_JAVA_HOME
+COPY --from=download-openjdk-17 /jdk-17.0.7.jdk $MAC_JAVA_HOME
